@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ms2-service
+spec:
+  selector:
+    app: ms2
+  type: NodePort
+  ports:
+  - protocol: "TCP"
+    port: 6000
+    targetPort: 5000
+    nodePort: 31402
+  type: LoadBalancer
+
+
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: ms2
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ms2
+    spec:
+      containers:
+      - name: ms2
+        image: sagarlohani89/ms2:v1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+      imagePullSecrets:
+      - name: regcred
