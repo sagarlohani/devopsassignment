@@ -3,8 +3,8 @@
 ## Deploy the microservices on k8s cluster
 
 ### Clone the project 
-### kubectl create -f ms1/ms1-deployment.yaml
-### kubectl create -f ms2/ms2-deployment.yaml
+kubectl create -f ms1/ms1-deployment.yaml
+kubectl create -f ms2/ms2-deployment.yaml
 
 ## API Description :
 
